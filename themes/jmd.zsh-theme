@@ -8,7 +8,7 @@ sudo npm install -g jshint# ----------------------------------------------------
 # REFERENCE: https://wiki.archlinux.org/index.php/zsh
 
 # List colors available through OMZ: spectrum_ls
-# SYMBOLS:  ⇉ ⇆ ♺ ✚ ✓ ⎄ ⎇ ⤵ ⤼ ⥅ ︎⎇︎⌥ ⑁ ⑂ ⑃ ୮ ᚛᚜ ᚜᚛ ⭌ ≠ ◦ ⎆ ⨂ ⍐ ⍗ ⑆±
+# SYMBOLS: ⇉ ⇆ ♺ ✚ ✓ ⎄ ⎇ ⤵ ⤹⌥ ⤼ ⥅ ︎⎇︎⌥ ⑁ ⑂ ⑃ ୮ ᚛᚜ ᚜᚛ ⭌ ≠ ◦ ⎆ ⨂ ⍐ ⍗ ⑆±
 
 MODE_INDICATOR="%{$FG[196]%}❮%{$reset_color%}%{$FG[196]%}❮❮%{$reset_color%}"
 local return_status="%{$FG[196]%}%(?..⏎) %{$reset_color%}"
@@ -19,21 +19,26 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$FG[112]%} ✓%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{[$FG[221]]%} ⚡%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$reset_color%} ○︎%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_STASHED="%{$FG[112]%} ⎆%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_NOTSTAGED="%{$FG[172]%} ⚠%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_AHEAD="%{$FG[196]%} ⎇⤵%{$reset_color%}"
-
-# Variables for right prompt
+ZSH_THEME_GIT_PROMPT_AHEAD=ANUM"%{$FG[130]%} ⎇⤵%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_BEHIND=BNUM"%{$FG[130]%} ⤹⌥%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIVERGED_REMOTE="%{$fg[cyan]%}BNUM%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[cyan]%}BNUM%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_MERGING="%{$fg_bold[magenta]%}⚡︎%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_SYMBOL="%{$fg[blue]%}±"
 ZSH_THEME_GIT_PROMPT_ADDED="%{$FG[112]%} ✚%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_MODIFIED="%{$FG[001]%} ⎄%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DELETED="%{$FG[196]%} ⨂%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_STAGED="%{$FG[112]%} ●%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_RENAMED="%{$FG[196]%} ♺%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$FG[214]%} ⇉%{$reset_color%}"
 
+# Time-based Git Variables
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_SHORT="%{$FG[049]%}"
 ZSH_THEME_GIT_TIME_SHORT_COMMIT_MEDIUM="%{$FG[196]%}"
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_LONG="%{$FG[196]%}"
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_NEUTRAL="%{$FG[245]%}"
-
 
 # Get the name of the server currently logged into
 function box_name {
@@ -93,6 +98,15 @@ function git_time_since_commit() {
     fi
 }
 
+
+# If inside a Git repository, print its branch and state
+#git_prompt_string() {
+#  local git_where="$(parse_git_branch)"
+#  [ -n "$git_where" ] && echo "$GIT_PROMPT_SYMBOL$(parse_git_state)$GIT_PROMPT_PREFIX%{$fg[yellow]%}${git_where#(refs/heads/|tags/)}$GIT_PROMPT_SUFFIX"
+#}
+
+ #Set the right-hand prompt
+ RPS1='$(git_prompt_string)'
 
 
 PROMPT='
