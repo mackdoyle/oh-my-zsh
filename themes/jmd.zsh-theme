@@ -8,7 +8,7 @@ sudo npm install -g jshint# ----------------------------------------------------
 # REFERENCE: https://wiki.archlinux.org/index.php/zsh
 
 # List colors available through OMZ: spectrum_ls
-# SYMBOLS: ⇉ ⇆ ♺ ✚ ✓ ⎄ ⎇ ⤵ ⤹⌥ ⤼ ⥅ ︎⎇︎⌥ ⑁ ⑂ ⑃ ୮ ᚛᚜ ᚜᚛ ⭌ ≠ ◦ ⎆ ⨂ ⍐ ⍗ ⑆±
+# SYMBOLS: ⇉ ⇆ ♺ ✚ ✓ ⎄ ⎇ ⤵ ⤹⌥ ⤼ ⥅ ︎⎇︎⌥ ⑁ ⑂ ⑃ ୮ ᚛᚜ ᚜᚛ ⭌ ≠ ◦ ⎆ ⨂ ⍐ ⍗ ⑆ ±
 
 MODE_INDICATOR="%{$FG[196]%}❮%{$reset_color%}%{$FG[196]%}❮❮%{$reset_color%}"
 local return_status="%{$FG[196]%}%(?..⏎) %{$reset_color%}"
@@ -23,16 +23,20 @@ ZSH_THEME_GIT_PROMPT_STASHED="%{$FG[112]%} ⎆%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_NOTSTAGED="%{$FG[172]%} ⚠%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_AHEAD=ANUM"%{$FG[130]%} ⎇⤵%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_BEHIND=BNUM"%{$FG[130]%} ⤹⌥%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIVERGED_REMOTE="%{$fg[cyan]%}BNUM%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[cyan]%}BNUM%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIVERGED_REMOTE="%{$FG[130]%}BNUM%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$FG[130]%}BNUM%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_MERGING="%{$fg_bold[magenta]%}⚡︎%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_SYMBOL="%{$fg[blue]%}±"
+ZSH_THEME_GIT_PROMPT_SYMBOL="%{$FG[027]%}±"
 ZSH_THEME_GIT_PROMPT_ADDED="%{$FG[112]%} ✚%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_MODIFIED="%{$FG[001]%} ⎄%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DELETED="%{$FG[196]%} ⨂%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$FG[112]%} ●%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_RENAMED="%{$FG[196]%} ♺%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$FG[214]%} ⇉%{$reset_color%}"
+
+# Format for git_prompt_long_sha() and git_prompt_short_sha()
+ZSH_THEME_GIT_PROMPT_SHA_BEFORE="#:%{$FG[130]%}"
+ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$reset_color%}"
 
 # Time-based Git Variables
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_SHORT="%{$FG[049]%}"
@@ -47,8 +51,8 @@ function box_name {
 
 # Set the style of the prompt line
 function set_prefix {
-    git branch >/dev/null 2>/dev/null && echo '±' && return
-    echo '○'
+    git branch >/dev/null 2>/dev/null && echo "±%{$reset_color%}" && return
+    echo "○%{$reset_color%}"
 }
 
 
@@ -113,4 +117,4 @@ PROMPT='
 %{$FG[001]%}%n%{$reset_color%} at %{$FG[001]%}$(box_name)%{$reset_color%} in %{$FG[130]%}${PWD/$HOME/~} %{$FG[001]%}$(git_prompt_info)
 $(set_prefix)'
 
-RPROMPT='${return_status}$(git_time_since_commit)$(git_prompt_status)%{$reset_color%}'
+RPROMPT='[$(git_prompt_short_sha)] ${return_status}$(git_time_since_commit)$(git_prompt_status)%{$reset_color%}'
