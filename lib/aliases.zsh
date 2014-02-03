@@ -3,7 +3,7 @@
 #
 
 # Workflow
-alias sassync='git checkout sites/all/themes/wheretraveler2_desktop_new_mobile/css/global.css  sites/all/themes/wheretraveler2_desktop_new_mobile/css/global-blessed1.css'
+alias sassync='git checkout sites/all/themes/wheretraveler2_desktop_new_mobile/css/global.css sites/all/themes/wheretraveler2_desktop_new_mobile/css/global-blessed1.css sites/all/themes/wheretraveler2_desktop_new_mobile/css/contest.css'
 
 # Environment Services
 alias webstart='launchctl load -w /System/Library/LaunchDaemons/org.apache.httpd.plist; launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist'
@@ -147,10 +147,7 @@ if zstyle -t ':omz:alias:diff' color; then
 fi
 
 # Miscellaneous
-(( $+commands[ack] )) && alias afind='nocorrect ack -g'
-(( $+commands[ebuild] )) && alias ebuild='nocorrect ebuild'
 (( $+commands[gist] )) && alias gist='nocorrect gist'
-(( $+commands[heroku] )) && alias heroku='nocorrect heroku'
 (( $+commands[mysql] )) && alias mysql='nocorrect mysql'
 
 
