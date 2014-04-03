@@ -11,9 +11,10 @@ alias sassync="git checkout sites/all/themes/wheretraveler2_desktop_new_mobile/c
 alias webstart="sudo apachectl start"
 alias webstop="sudo apachectl graceful-stop"
 alias webrestart="sudo apachectl restart"
-alias dbstart="launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
-alias dbstop="launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
-alias ftpstart="sudo launchctl load /System/Library/LaunchDaemons/ftp.plist"
+alias dbstart="mysql.server start"
+alias dbstop="mysql.server stop"
+alias dbrestart="mysql.server restart"
+alias ftpstart="sudo launchctl load /System/Library/LaunchDaemons/ftp.plist, "
 alias ftpstop="sudo launchctl unload /System/Library/LaunchDaemons/ftp.plist"
 
 # FLUSH DNS
