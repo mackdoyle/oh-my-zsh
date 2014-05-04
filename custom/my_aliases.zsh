@@ -1,3 +1,54 @@
+#
+# Defines jdoyle specific aliases
+#
+
+# PERSONAL WORKFLOW SHORTCUTS
+# -----------------------------------------------------
+	alias sassync="git checkout sites/all/themes/wheretraveler2_desktop_new_mobile/css/global.css sites/all/themes/wheretraveler2_desktop_new_mobile/css/global-blessed1.css sites/all/themes/wheretraveler2_desktop_new_mobile/css/contest.css"
+
+# WEB SERVER ENVIRONMENT SERVICES
+# -----------------------------------------------------
+	alias webstart="sudo apachectl start"
+	alias webstop="sudo apachectl graceful-stop"
+	alias webrestart="sudo apachectl restart"
+	alias dbstart="launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
+	alias dbstop="launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
+	alias ftpstart="sudo launchctl load /System/Library/LaunchDaemons/ftp.plist"
+	alias ftpstop="sudo launchctl unload /System/Library/LaunchDaemons/ftp.plist"
+
+# FLUSH DNS
+# -----------------------------------------------------
+	alias flushdns="dscacheutil -flushcache"
+
+
+# MySQL
+# -----------------------------------------------------
+	alias sqltrace="sudo tail -f /var/log/mysql/error.log"
+	alias cdmysql="/usr/local/mysql"
+	alias cdmysqldata="/usr/local/var/mysql"
+	alias mysqlconf="open /private/etc/my.conf"
+
+# SSH Shortcuts
+# -----------------------------------------------------
+	alias sshdev="ssh admin@mccdev01.mcc-anthill.net"
+
+# PRETTY PS
+# Format the output of the ps command. For example compare:
+# $ps axu | grep mysql | prettyps to $ps axu | grep mysql
+# -----------------------------------------------------
+	alias prettyps="~/bash/prettyps.sh"
+
+# DASH
+# Bash documentation through Dash
+# -----------------------------------------------------
+	alias dashbash="open dash://bash:{query}"
+
+#MISC
+# -----------------------------------------------------
+	alias ccmds="vim ~/Documents/Documentation/cli-commands.txt"
+	alias vi="reattach-to-user-namespace mvim"
+	alias vim="reattach-to-user-namespace vim"
+
 
 # OTHER ALIAS BY: Sorin Ionescu <sorin.ionescu@gmail.com>
 setopt CORRECT # Correct commands.
