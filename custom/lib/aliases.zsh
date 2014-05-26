@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #
 # Defines jdoyle specific aliases
 #
@@ -13,9 +11,10 @@ alias sassync="git checkout sites/all/themes/wheretraveler2_desktop_new_mobile/c
 alias webstart="sudo apachectl start"
 alias webstop="sudo apachectl graceful-stop"
 alias webrestart="sudo apachectl restart"
-alias dbstart="launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
-alias dbstop="launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
-alias ftpstart="sudo launchctl load /System/Library/LaunchDaemons/ftp.plist"
+alias dbstart="mysql.server start"
+alias dbstop="mysql.server stop"
+alias dbrestart="mysql.server restart"
+alias ftpstart="sudo launchctl load /System/Library/LaunchDaemons/ftp.plist, "
 alias ftpstop="sudo launchctl unload /System/Library/LaunchDaemons/ftp.plist"
 
 # FLUSH DNS
@@ -45,17 +44,10 @@ alias dashbash="open dash://bash:{query}"
 
 
 # OTHER ALIAS BY: Sorin Ionescu <sorin.ionescu@gmail.com>
->>>>>>> 90466a4f4d3dc8afead0c93641d164ba4346d6c9
 
-# OTHER ALIAS BY: Sorin Ionescu <sorin.ionescu@gmail.com>
 setopt CORRECT # Correct commands.
-setopt auto_cd  # if the current word is not a command but is a dir, then go there
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 90466a4f4d3dc8afead0c93641d164ba4346d6c9
 # LS
 # -----------------------------------------------------
 if (( $+commands[dircolors] )); then
@@ -80,7 +72,7 @@ else
   fi
 fi
 
-alias l='ls -la'             # Show files in one column.
+alias l='ls -1A'             # Show files in one column.
 alias ll='ls -lh'            # Show human readable.
 alias lh='ls -lhA'           # Show hidden files.
 alias lx='ls -lhXB'          # Sort by extension.
