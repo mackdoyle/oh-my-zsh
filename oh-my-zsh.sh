@@ -5,13 +5,6 @@ fi
 
 #
 # Initializes Oh My Zsh
-<<<<<<< HEAD
-#
-=======
-
-
->>>>>>> 90466a4f4d3dc8afead0c93641d164ba4346d6c9
-
 # Load all of the config files in ~/oh-my-zsh that end in .zsh
 # TIP: Add files you don't want in git to .gitignore
 for config_file ($ZSH/lib/*.zsh); do
