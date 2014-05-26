@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #
 # Defines jdoyle specific aliases
 #
@@ -45,17 +43,9 @@ alias dashbash="open dash://bash:{query}"
 
 
 # OTHER ALIAS BY: Sorin Ionescu <sorin.ionescu@gmail.com>
->>>>>>> 90466a4f4d3dc8afead0c93641d164ba4346d6c9
-
-# OTHER ALIAS BY: Sorin Ionescu <sorin.ionescu@gmail.com>
 setopt CORRECT # Correct commands.
 setopt auto_cd  # if the current word is not a command but is a dir, then go there
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 90466a4f4d3dc8afead0c93641d164ba4346d6c9
 # LS
 # -----------------------------------------------------
 if (( $+commands[dircolors] )); then
